@@ -1,0 +1,38 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: alistairmccann
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: todo-app
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: serverlessTodoApp
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+  deploymentMethod: direct
+
+functions:
+  GetTodos:
+    handler: functions/GetTodos/index.handler
+    events:
+      - httpApi:
+          path: /todos
+          method: get
+  PostTodo:
+    handler: functions/PostTodo/index.handler
+    events:
+      - httpApi:
+          path: /todos
+          method: post
+  GetTodo:
+    handler: functions/GetTodo/index.handler
+    events:
+      - httpApi:
+          path: /todos/{id}
+          method: get
+  DeleteTodo:
+    handler: functions/DeleteTodo/index.handler
+    events:
+      - httpApi:
+          path: /todos/{id}
+          method: delete
