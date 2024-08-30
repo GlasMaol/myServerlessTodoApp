@@ -36,3 +36,9 @@ functions:
       - httpApi:
           path: /todos/{id}
           method: delete
+  UpdateTodo:
+    handler: functions/UpdateTodo/index.handler
+    events:
+      - httpApi:
+          path: /todos/{id}
+          method: put
