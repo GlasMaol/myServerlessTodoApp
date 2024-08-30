@@ -24,12 +24,14 @@ exports.handler = async (event) => {
   const {id} = event.pathParameters;
   const { todo, done } = JSON.parse(event.body);
 
+  //converts the id (which is a string) into a number in order to ba able to access the array.
   const index = parseInt(id);
 
   if(isNaN(index) || index < 0 || index > todos.length) {
     return sendResponse(404, { message: `Todo with id ${id} not found.` });
   }
 
+  //todos[index] accesses the todo item at the SPECIFIC index
   todos[index] = {
     ...todos[index],
 
