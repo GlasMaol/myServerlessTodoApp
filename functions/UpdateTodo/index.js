@@ -32,6 +32,8 @@ exports.handler = async (event) => {
 
   todos[index] = {
     ...todos[index],
+
+    //Updates property if new value provided. If no new propertly provided the old value is kept.
     todo: todo !== undefined ? todo : todos[index].todo,
     done: done !== undefined ? done : todos[index].done
   }
